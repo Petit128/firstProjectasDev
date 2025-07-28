@@ -12,7 +12,7 @@ require_once("models/ReservationModel.php");
 require_once("models/StatistiqueModel.php");
 require_once("models/ReservationPlat.php");
 require_once("models/Allergene.php");
-require_once("models/MenuPlat.php"); // Assurez-vous que MenuPlat est inclus
+require_once("models/MenuPlat.php"); 
 
 // Include controller files
 require_once("controllers/PagesController.php");
@@ -137,7 +137,7 @@ switch ($page) {
             exit();
         }
         $type_service_param = '';
-        if (isset($_GET['type_menu'])) { // Utiliser 'type_menu' comme nom de paramètre dans l'URL
+        if (isset($_GET['type_menu'])) { 
             $type_service_param = $_GET['type_menu'];
         }
         $studentController->menu($type_service_param);
