@@ -1,0 +1,1014 @@
+/* Styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    flex: 1; /* Permet au contenu de prendre l'espace disponible */
+    display: flex;
+    flex-direction: column;
+}
+
+.page-content {
+    flex: 1; /* Permet au contenu de la page de s'étendre */
+}
+
+/* Header */
+header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 20vh;
+    background-color: rgba(10, 128, 91, 0.721);
+    color: white;
+    text-align: center;
+    justify-content: center; /* Centrer verticalement le contenu */
+}
+
+header .text {
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+
+/* Navigation (barre supérieure) */
+.navbar {
+    width: 100%;
+    height: 45px;
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    border: 2px solid black;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    padding: 0 20px;
+    flex-grow: 1;
+    position: sticky;
+    top: 0;
+    z-index: 999; /* Moins que le sidenav */
+}
+
+ul.navbar-nav {
+    list-style-type: none;
+    display: flex;
+}
+
+.nav-item a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 8px;
+    text-decoration: none;
+}
+
+.nav-item a:hover {
+    background-color: #444;
+}
+
+.nav-item:last-child {
+    border-right: none;
+}
+
+
+/* Sidenav */
+.sidenav {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Caché par défaut */
+    width: 250px;
+    height: 100%;
+    background-color: #2c3e50;
+    color: white;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000; /* Au-dessus de tout */
+    padding-top: 60px; /* Espace pour le bouton de fermeture */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column; /* Utiliser flexbox pour l'alignement */
+    justify-content: space-between; /* Espace entre les éléments pour pousser le logout en bas */
+    height: 100vh; /* Prend toute la hauteur d'écran */
+    padding-bottom: 60px; /* Espace pour le bouton logout */
+}
+
+.logout {
+    position: inherit;
+    top: 110px;
+    display: block;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.3s;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.sidenav-logout{
+    position: relative;
+    bottom: 50px;
+    margin-top: auto;
+    border-top: 1px solid #333;
+}
+
+.logout:hover{
+    background-color: rgba(148, 27, 27, 0.986);
+}
+
+
+.sidenav.active {
+    transform: translateX(250px); /* Visible */
+}
+
+.sidenav-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.sidenav-bar {
+    list-style-type: none;
+    padding: 0;
+    flex-grow: 1; /* Prend l'espace restant */
+}
+
+.sidenav-item a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.sidenav-item a:hover {
+    background-color: #34495e;
+}
+
+.sidenav-drop-content {
+    display: none;
+    background-color: #34495e;
+}
+
+.sidenav-drop:hover .sidenav-drop-content {
+    display: block;
+}
+
+.sidenav-drop-content a {
+    padding-left: 35px;
+}
+
+
+.logout {
+    text-align: center;
+    padding: 15px 20px;
+    background-color: #e74c3c;
+}
+
+.logout:hover {
+    background-color: #c0392b;
+}
+
+/* Toggle Button for Sidenav */
+.menu-toggle-btn {
+    font-size: 2em;
+    color: white;
+    cursor: pointer;
+    margin-left: 20px; /* Pour le placer à côté de la navbar */
+}
+
+/* Contenu principal (décalage si sidenav ouvert) */
+.main-wrapper {
+    display: flex;
+    flex: 1;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.main-wrapper.shifted {
+    margin-left: 250px; /* Décaler le contenu quand le sidenav est ouvert */
+}
+
+/* Bouton Panier flottant */
+.cart-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #039f60;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 998; /* Moins que le sidenav */
+    transition: background-color 0.3s;
+}
+
+.cart-button:hover {
+    background-color: #027a4b;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    width: 100%;
+    margin-top: auto; /* Pousse le footer vers le bas */
+}
+
+/* Styles pour les formulaires d'authentification (Login/Register) */
+.auth-container {
+    width: 65vh;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.auth-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #039f60;
+}
+
+.auth-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.auth-container label {
+    font-weight: bold;
+    color: #555;
+}
+
+.auth-container input[type="text"],
+.auth-container input[type="email"],
+.auth-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.auth-container button[type="submit"] {
+    background-color: #039f60;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+}
+
+.auth-container button[type="submit"]:hover {
+    background-color: #027a4b;
+}
+
+.auth-container p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.auth-container a {
+    color: #039f60;
+    text-decoration: none;
+}
+
+.auth-container a:hover {
+    text-decoration: underline;
+}
+
+/* Messages */
+.message {
+    color: green;
+    background-color: #e6ffe6;
+    border: 1px solid #039f60;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.error {
+    color: red;
+    background-color: #ffe6e6;
+    border: 1px solid #e74c3c;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+/* Styles pour les tableaux et formulaires admin */
+.admin-container {
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.admin-auth{
+    width: 100vh;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.admin-container p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+.admin-container h2 {
+    color: #039f60;
+    margin-bottom: 20px;
+}
+
+.admin-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 600px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.admin-container form label {
+    font-weight: bold;
+}
+
+.admin-container form input[type="text"],
+.admin-container form input[type="number"],
+.admin-container form input[type="email"],
+.admin-container form input[type="password"],
+.admin-container form input[type="datetime-local"],
+.admin-container form textarea,
+.admin-container form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.admin-container form button[type="submit"] {
+    background-color: #039f60;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.admin-container form button[type="submit"]:hover {
+    background-color: #027a4b;
+}
+
+.admin-container a {
+    display: inline-block;
+    margin-top: 15px;
+    margin-right: 10px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.admin-container a:hover {
+    background-color: #0056b3;
+}
+
+.admin-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.admin-container table th,
+.admin-container table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.admin-container table th {
+    background-color: #333;
+    color: white;
+}
+
+.admin-container table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.admin-container table button[type="submit"] {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.admin-container table button[type="submit"]:hover {
+    background-color: #c82333;
+}
+
+.admin-container table select {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* Styles pour les cartes de plats */
+.board {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: #039f60;
+    margin-bottom: 10px;
+}
+
+.card p {
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.card .plat-details {
+    margin-top: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    text-align: left;
+}
+
+.card .add-to-cart {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.card .add-to-cart:hover {
+    background-color: #2980b9;
+}
+
+/* Styles spécifiques pour les pages étudiant */
+
+/* Student Notifications */
+.notification-item {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.notification-item p {
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 1em;
+}
+
+.notification-item small {
+    color: #777;
+    font-size: 0.85em;
+}
+
+/* Student Reservations & Panier (Table styles) */
+.container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.container table th,
+.container table td {
+    border: 1px solid #ddd;
+    padding: 12px 0 12px 12px;
+    text-align: revert;
+}
+
+.container table th {
+    background-color: #333;
+    color: white;
+}
+
+.container table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Buttons within tables (e.g., remove from cart, cancel reservation) */
+.container table button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.container table button.btn-cancel { /* For cancel reservation button */
+    background-color: #e74c3c;
+    color: white;
+}
+
+.container table button.btn-cancel:hover {
+    background-color: #c0392b;
+}
+
+/* Panier specific styles */
+.container h3 { /* For total price */
+    margin-top: 20px;
+    font-size: 1.5em;
+}
+
+.container form button[type="submit"] { /* For confirm reservation button */
+    background-color: #039f60;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    display: block; /* Make it a block element to take full width or align */
+    width: fit-content; /* Adjust width to content */
+    margin-left: auto; /* Align to right */
+    margin-right: 0;
+}
+
+.container form button[type="submit"]:hover {
+    background-color: #027a4b;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    /* Tables become scrollable on small screens */
+    .container table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap; /* Prevent text wrapping in cells */
+    }
+
+    .container table thead,
+    .container table tbody,
+    .container table th,
+    .container table td,
+    .container table tr {
+        display: block; /* Make table elements block for better control */
+    }
+
+    .container table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px; /* Hide table headers visually */
+    }
+
+    .container table tr {
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .container table td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%; /* Space for the pseudo-element label */
+        text-align: right;
+    }
+
+    .container table td:before {
+        content: attr(data-label); /* Use data-label for responsive headers */
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        color: #555;
+    }
+
+    /* Specific data-labels for each column */
+    /* Panier */
+    .container table.panier-table td:nth-of-type(1):before { content: "Plat"; }
+    .container table.panier-table td:nth-of-type(2):before { content: "Prix"; }
+    .container table.panier-table td:nth-of-type(3):before { content: "Quantité"; }
+    .container table.panier-table td:nth-of-type(4):before { content: "Total"; }
+    .container table.panier-table td:nth-of-type(5):before { content: "Actions"; }
+
+    /* Réservations */
+    .container table.reservations-table td:nth-of-type(1):before { content: "ID Réservation"; }
+    .container table.reservations-table td:nth-of-type(2):before { content: "Date Réservation"; }
+    .container table.reservations-table td:nth-of-type(3):before { content: "Statut"; }
+    .container table.reservations-table td:nth-of-type(4):before { content: "Plats"; }
+    .container table.reservations-table td:nth-of-type(5):before { content: "Action"; }
+
+
+    /* Adjust button alignment in responsive tables */
+    .container table td form {
+        display: block;
+        text-align: right;
+    }
+    .container table td button {
+        width: auto;
+        margin-top: 5px;
+    }
+
+    .container h3 { /* Total price in Panier */
+        text-align: center;
+        font-size: 1.3em;
+    }
+
+    .container form button[type="submit"] { /* Confirm reservation button */
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /* Adjustments for notification items */
+    .notification-item {
+        padding: 10px;
+    }
+    .notification-item p {
+        font-size: 0.95em;
+    }
+    .notification-item small {
+        font-size: 0.8em;
+    }
+}
+
+/* Student Menu specific styles (already present, but ensuring it's here) */
+.student-menu-container {
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.menu-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.menu-header h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+
+.menu-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.type-plat-section {
+    margin-bottom: 50px;
+}
+
+.type-plat-title {
+    color: #2c3e50;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+
+.plats-grid {
+    display: flex;
+    flex-direction: column; /* Stack sections vertically */
+    gap: 40px; /* Space between sections */
+}
+
+.plats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjusted min-width for cards */
+    gap: 25px;
+}
+
+.plat-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Ensure content stacks */
+}
+
+.plat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.plat-image {
+    height: 180px; /* Slightly smaller image height */
+    overflow: hidden;
+}
+
+.plat-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.plat-content {
+    padding: 15px; /* Slightly less padding */
+    flex-grow: 1; /* Allow content to take available space */
+    display: flex;
+    flex-direction: column;
+}
+
+.plat-nom {
+    color: #2c3e50;
+    margin-bottom: 8px; /* Less margin */
+    font-size: 1.2rem; /* Slightly smaller font */
+    font-weight: 600;
+}
+
+.plat-description {
+    color: #666;
+    margin-bottom: 12px; /* Less margin */
+    line-height: 1.4; /* Slightly tighter line height */
+    font-size: 0.9em; /* Smaller font */
+    flex-grow: 1; /* Allow description to grow */
+}
+
+.plat-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px; /* Less margin */
+}
+
+.plat-info {
+    display: flex;
+    gap: 10px; /* Less gap */
+    align-items: center;
+}
+
+.plat-prix {
+    font-weight: bold;
+    color: #27ae60;
+    font-size: 1em; /* Slightly smaller font */
+}
+
+.plat-calories {
+    color: #f39c12;
+    font-size: 0.85em; /* Smaller font */
+}
+
+.plat-badges {
+    display: flex;
+    gap: 4px; /* Less gap */
+}
+
+.badge {
+    padding: 3px 7px; /* Smaller padding */
+    border-radius: 12px; /* Smaller border-radius */
+    font-size: 0.75em; /* Smaller font */
+    font-weight: 500;
+}
+
+.badge-viande {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.badge-poisson {
+    background-color: #3498db;
+    color: white;
+}
+
+.badge-vegetarien {
+    background-color: #27ae60;
+    color: white;
+}
+
+.badge-vegan {
+    background-color: #9b59b6;
+    color: white;
+}
+
+.plat-quota {
+    margin-bottom: 12px; /* Less margin */
+}
+
+.quota-info {
+    font-size: 0.85em; /* Smaller font */
+    color: #7f8c8d;
+}
+
+.plat-actions {
+    text-align: center;
+    margin-top: auto; /* Push actions to the bottom of the card */
+}
+
+.add-cart-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Less gap */
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Less gap */
+}
+
+.quantity-selector label {
+    font-size: 0.85em; /* Smaller font */
+    color: #666;
+}
+
+.quantity-selector select {
+    padding: 4px 8px; /* Smaller padding */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.85em; /* Smaller font */
+}
+
+.btn {
+    padding: 8px 15px; /* Smaller padding */
+    border: none;
+    border-radius: 5px; /* Smaller border-radius */
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    font-size: 0.85em; /* Smaller font */
+}
+
+.btn-ajouter-panier {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-ajouter-panier:hover {
+    background-color: #2980b9;
+}
+
+.btn-indisponible {
+    background-color: #95a5a6;
+    color: white;
+    cursor: not-allowed;
+}
+
+.no-plats {
+    text-align: center;
+    padding: 40px 20px; /* Less padding */
+}
+
+.no-plats-content h3 {
+    color: #7f8c8d;
+    margin-bottom: 10px; /* Less margin */
+    font-size: 1.4rem; /* Slightly smaller font */
+}
+
+.no-plats-content p {
+    color: #95a5a6;
+    margin-bottom: 8px; /* Less margin */
+    font-size: 0.9em; /* Smaller font */
+}
+
+.debug-info {
+    text-align: left;
+    max-width: 350px; /* Smaller max-width */
+    margin: 0 auto;
+    padding: 8px; /* Smaller padding */
+    background: #f8f9fa;
+    border-radius: 4px; /* Smaller border-radius */
+    font-size: 0.75em; /* Smaller font */
+}
+
+@media (max-width: 768px) {
+    .student-menu-container {
+        padding: 10px;
+    }
+
+    .menu-header h1 {
+        font-size: 2rem;
+    }
+
+    .type-plat-title {
+        font-size: 1.5rem;
+    }
+
+    .plats-row {
+        grid-template-columns: 1fr; /* Single column layout */
+    }
+
+    .plat-details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px; /* Less gap */
+    }
+
+    .quantity-selector {
+        flex-direction: column;
+        gap: 5px; /* Less gap */
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-header h1 {
+        font-size: 1.8rem;
+    }
+    .menu-subtitle {
+        font-size: 1em;
+    }
+    .type-plat-title {
+        font-size: 1.3rem;
+    }
+    .plat-nom {
+        font-size: 1.1rem;
+    }
+    .plat-description {
+        font-size: 0.85em;
+    }
+    .plat-prix {
+        font-size: 0.95em;
+    }
+    .plat-calories {
+        font-size: 0.8em;
+    }
+    .badge {
+        font-size: 0.7em;
+    }
+    .quota-info {
+        font-size: 0.8em;
+    }
+    .quantity-selector label,
+    .quantity-selector select,
+    .btn {
+        font-size: 0.8em;
+    }
+}
